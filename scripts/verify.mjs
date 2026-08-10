@@ -20,6 +20,13 @@ const forbiddenPhrases = [
   "hire me",
   "looking for opportunities",
   "next challenge",
+  "passionate",
+  "visionary",
+  "innovative",
+  "life larger than a codebase",
+  "canonical surfaces",
+  "interpretation layer",
+  "public surfaces",
 ];
 const expectedExternalLinks = [
   "https://github.com/TheCyberLocal",

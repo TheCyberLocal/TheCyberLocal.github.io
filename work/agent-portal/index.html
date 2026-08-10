@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Agent Portal Case Study | Timothy Macfarlane</title>
-    <meta name="description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, software assurance, release engineering, and reproducible operational recovery.">
+    <meta name="description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, testing, release engineering, deployment, and recovery.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://thecyberlocal.github.io/work/agent-portal/">
     <meta name="author" content="Timothy Macfarlane">
@@ -12,7 +12,7 @@
     <meta property="og:site_name" content="Timothy Macfarlane">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Agent Portal Case Study | Timothy Macfarlane">
-    <meta property="og:description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, software assurance, release engineering, and reproducible operational recovery.">
+    <meta property="og:description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, testing, release engineering, deployment, and recovery.">
     <meta property="og:url" content="https://thecyberlocal.github.io/work/agent-portal/">
     <meta property="og:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
     <meta property="og:image:width" content="976">
@@ -20,12 +20,12 @@
     <meta property="og:image:alt" content="Portrait of Timothy Macfarlane">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Agent Portal Case Study | Timothy Macfarlane">
-    <meta name="twitter:description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, software assurance, release engineering, and reproducible operational recovery.">
+    <meta name="twitter:description" content="Agent Portal case study by Timothy Macfarlane covering production application architecture, testing, release engineering, deployment, and recovery.">
     <meta name="twitter:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/css/site.css">
     <script>document.documentElement.classList.add("js");</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://thecyberlocal.github.io/#timothy-macfarlane","name":"Timothy Macfarlane","alternateName":"TheCyberLocal","url":"https://thecyberlocal.github.io/","image":"https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg","jobTitle":"Software Architect & Engineer","description":"Timothy Macfarlane is a software architect and engineer whose work spans application architecture, software modernization, testing and assurance, release engineering, production systems, and developer tooling.","sameAs":["https://github.com/TheCyberLocal","https://www.linkedin.com/in/tzm01"],"knowsAbout":["software architecture","software assurance","release engineering","developer tooling","compiler engineering","ASP.NET Core","SQL Server","software modernization","AI-assisted engineering","testing architecture","reproducible software engineering"]},{"@type":"TechArticle","@id":"https://thecyberlocal.github.io/work/agent-portal/#case-study","url":"https://thecyberlocal.github.io/work/agent-portal/","headline":"Agent Portal: Building an Evidence System for Release Confidence","description":"Agent Portal case study by Timothy Macfarlane covering production application architecture, software assurance, release engineering, and reproducible operational recovery.","author":{"@id":"https://thecyberlocal.github.io/#timothy-macfarlane"},"about":["software assurance","application architecture","testing architecture","release engineering","operational reliability","reproducible software engineering"]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://thecyberlocal.github.io/#timothy-macfarlane","name":"Timothy Macfarlane","alternateName":"TheCyberLocal","url":"https://thecyberlocal.github.io/","image":"https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg","jobTitle":"Software Architect & Engineer","description":"Timothy Macfarlane is a software architect and engineer whose work spans application architecture, software modernization, testing and assurance, release engineering, production systems, and developer tooling.","sameAs":["https://github.com/TheCyberLocal","https://www.linkedin.com/in/tzm01"],"knowsAbout":["software architecture","software assurance","release engineering","developer tooling","compiler engineering","ASP.NET Core","SQL Server","software modernization","AI-assisted engineering","testing architecture","reproducible software engineering"]},{"@type":"TechArticle","@id":"https://thecyberlocal.github.io/work/agent-portal/#case-study","url":"https://thecyberlocal.github.io/work/agent-portal/","headline":"Agent Portal: Building an Evidence System for Release Confidence","description":"Agent Portal case study by Timothy Macfarlane covering production application architecture, testing, release engineering, deployment, and recovery.","author":{"@id":"https://thecyberlocal.github.io/#timothy-macfarlane"},"about":["software assurance","application architecture","testing architecture","release engineering","operational reliability","reproducible software engineering"]}]}</script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -59,9 +59,9 @@
             <div><p class="eyebrow">Case study 01 <span>Enterprise application</span></p><h1>Agent Portal</h1><p class="case-subtitle">Building an evidence system for application correctness, release readiness, and operational recovery.</p></div>
             <dl class="case-facts">
               <div><dt>Scope</dt><dd>Architecture through production operations</dd></div>
-              <div><dt>Environment</dt><dd>Production Microsoft web application stack</dd></div>
+              <div><dt>Environment</dt><dd>Private production web application</dd></div>
               <div><dt>Primary lens</dt><dd>Software assurance and reproducibility</dd></div>
-              <div><dt>Disclosure</dt><dd>Publicly safe architecture only</dd></div>
+              <div><dt>Disclosure</dt><dd>Sensitive implementation details omitted</dd></div>
             </dl>
           </div>
           <div class="case-diagram evidence-system" aria-label="A conclusion is supported by evidence from behavior, security, contracts, deployment, and rollback, with coverage validating evidence adequacy">
@@ -89,32 +89,32 @@
           </ol>
         </aside>
         <div class="case-content">
-          <section id="apparent-problem" class="case-section"><p class="section-number">01</p><h2>Apparent Problem</h2><p class="lead">The visible work arrived as individual application changes: normalize an inconsistent workflow, improve a report, harden a contract, fix a release problem, or automate a browser path.</p><p>Handled separately, each request could produce a local improvement while leaving the larger conclusion unsupported. A passing change did not by itself establish that the application remained functional, secure, deployable, or recoverable.</p></section>
+          <section id="apparent-problem" class="case-section"><p class="section-number">01</p><h2>Apparent Problem</h2><p class="lead">Requests arrived as individual changes: normalize a workflow, improve a report, harden a contract, fix a release problem, or automate a browser path.</p><p>Each change could work locally while release readiness remained unproven. A successful fix did not by itself establish that the application was still functional, secure, deployable, and recoverable.</p></section>
 
-          <section id="actual-question" class="case-section"><p class="section-number">02</p><h2>Actual Question</h2><div class="question-callout"><p>What evidence is sufficient to conclude that this application behaves as required, preserves the contracts that matter, can be released safely, and can be restored when a release fails?</p></div><p>This formulation changed the unit of work. The application, database, test environment, deployment process, and rollback path became parts of one assurance problem.</p></section>
+          <section id="actual-question" class="case-section"><p class="section-number">02</p><h2>Actual Question</h2><div class="question-callout"><p>What evidence is sufficient to conclude that this application behaves as required, preserves the contracts that matter, can be released safely, and can be restored when a release fails?</p></div><p>That changed the scope. The application, data layer, test environment, deployment process, and recovery path all had to be evaluated together.</p></section>
 
           <section id="hidden-assumptions" class="case-section"><p class="section-number">03</p><h2>Hidden Assumptions</h2><p>The initial tasks carried conclusions that their available evidence could not fully support.</p><ul class="assumption-list">
-            <li><span>A1</span><div><strong>Green tests represent important behavior.</strong><p>That is true only when the tests exercise the workflows, boundaries, roles, and failure paths relevant to the release.</p></div></li>
+            <li><span>A1</span><div><strong>Green tests cover the behavior that matters.</strong><p>That is true only when the tests exercise the workflows, boundaries, roles, and failure paths relevant to the release.</p></div></li>
             <li><span>A2</span><div><strong>Existing behavior is a coherent specification.</strong><p>Legacy behavior can contain contradictions, accidental coupling, and rules that live only in operator memory.</p></div></li>
             <li><span>A3</span><div><strong>Application and data contracts agree.</strong><p>Model validation, database constraints, serialization, and integration expectations can each enforce a different rule.</p></div></li>
-            <li><span>A4</span><div><strong>A deployable artifact is an operable release.</strong><p>Artifact creation does not prove environment readiness, authorization, acceptance behavior, or recovery.</p></div></li>
+            <li><span>A4</span><div><strong>A successful build is a production-ready release.</strong><p>Artifact creation does not prove environment readiness, authorization, acceptance behavior, or recovery.</p></div></li>
             <li><span>A5</span><div><strong>The verification process is repeatable.</strong><p>A correct sequence performed manually once may still fail as a recurring release mechanism.</p></div></li>
           </ul></section>
 
           <section id="constraints" class="case-section"><p class="section-number">04</p><h2>Constraints</h2><div class="constraint-grid">
-            <article><h3>Live operational context</h3><p>Business workflows and reporting needs continued while behavior was normalized and the assurance surface expanded.</p></article>
+            <article><h3>Live operational context</h3><p>Business workflows and reporting needs continued while behavior was normalized and verification became more comprehensive.</p></article>
             <article><h3>Established platform</h3><p>A mature Microsoft web application, relational data layer, browser workflows, and established production infrastructure formed the practical system boundary.</p></article>
             <article><h3>Legacy knowledge</h3><p>Some requirements were embedded in existing code, data shape, reports, or human procedure rather than an explicit contract.</p></article>
             <article><h3>Safe disclosure</h3><p>Private source, production data, customer information, credentials, and proprietary operational details remain outside this case study.</p></article>
           </div></section>
 
-          <section id="decision" class="case-section"><p class="section-number">05</p><h2>Decision</h2><p class="lead">Treat release confidence as an evidence system, not a test-suite status.</p><p>For each important conclusion, define the property that must hold, the mechanism that enforces it, the evidence that observes it, the coverage rule that bounds that evidence, and the response when the property cannot be established.</p><div class="decision-model" aria-label="Property leads to rule, mechanism, evidence, coverage, and gate"><span>Property</span><b></b><span>Rule</span><b></b><span>Mechanism</span><b></b><span>Evidence</span><b></b><span>Coverage</span><b></b><span>Gate</span></div><p>This decision placed knowledge where it could be inspected: contracts for boundaries, code for invariant behavior, configuration for environment-specific choices, tests for observable properties, and deployment automation for operational transitions.</p></section>
+          <section id="decision" class="case-section"><p class="section-number">05</p><h2>Decision</h2><p class="lead">Treat release confidence as an evidence system, not a test-suite status.</p><p>For every release claim, define the property that must hold, how it is enforced, what evidence checks it, what coverage is required, and what happens when it cannot be established.</p><div class="decision-model" aria-label="Property leads to rule, mechanism, evidence, coverage, and gate"><span>Property</span><b></b><span>Rule</span><b></b><span>Mechanism</span><b></b><span>Evidence</span><b></b><span>Coverage</span><b></b><span>Gate</span></div><p>Rules were assigned to explicit boundaries: contracts, application code, configuration, tests, and deployment automation.</p></section>
 
           <section id="implementation" class="case-section"><p class="section-number">06</p><h2>Implementation</h2><div class="implementation-list">
             <article><span>Application</span><div><h3>Normalize behavior at explicit boundaries</h3><p>Workflow rules were moved out of scattered UI assumptions and into server-side validation, domain behavior, and durable data constraints where appropriate.</p></div></article>
             <article><span>Contracts</span><div><h3>Make integration expectations inspectable</h3><p>Request shape, authorization, persistence behavior, and downstream assumptions were hardened so incompatible states could fail clearly and early.</p></div></article>
             <article><span>Browser</span><div><h3>Exercise behavior where users experience it</h3><p>Playwright automation covered consequential browser journeys, including role-sensitive behavior and the integration between rendered UI, application logic, and data.</p></div></article>
-            <article><span>Release</span><div><h3>Encode the route to production</h3><p>Deterministic profiles, hard gates, staged deployment automation, and acceptance checks reduced the number of release decisions dependent on memory.</p></div></article>
+            <article><span>Release</span><div><h3>Encode the route to production</h3><p>Deterministic profiles, hard gates, staged deployment automation, and acceptance checks made the release process repeatable instead of relying on remembered steps.</p></div></article>
             <article><span>Recovery</span><div><h3>Make rollback an explicit behavior</h3><p>The release mechanism included an explicit recovery path capable of reversing a failed release when acceptance checks did not hold.</p></div></article>
             <article><span>Reporting</span><div><h3>Optimize the delivery model</h3><p>A reporting performance investigation showed that much of the perceived latency came from the delivery model rather than report computation itself. Moving from complete-document generation toward interactive rendering substantially reduced time to first useful content.</p></div></article>
           </div></section>
@@ -129,9 +129,9 @@
             <tr><td>Recovery</td><td>Verified recovery procedure</td><td>Failed releases have a defined and reproducible reversal path.</td></tr>
           </tbody></table></div></section>
 
-          <section id="evidence-adequacy" class="case-section"><p class="section-number">08</p><h2>Evidence Adequacy</h2><p class="lead">A check is useful only within the boundary of what it actually observes.</p><p>Browser tests can demonstrate selected journeys, but they do not establish that every authorization boundary was exercised. Dependency scanning can detect known vulnerability data, but it does not establish business correctness. An availability check can report process status without proving a release's critical workflow.</p><p>Adequacy therefore required a second layer of questions:</p><ul class="check-list"><li>Which required behaviors have no corresponding evidence?</li><li>Which roles, branches, integrations, or deployment states are outside the exercised set?</li><li>Does the evidence run against the same artifact and configuration being evaluated?</li><li>Can a failed check block the transition it is meant to govern?</li><li>Can another engineer reproduce the conclusion from the same inputs?</li></ul><div class="principle-block"><p class="label">Governing principle</p><p>A release gate should fail when the required conclusion cannot be established, not only when a known implementation step throws an error.</p></div></section>
+          <section id="evidence-adequacy" class="case-section"><p class="section-number">08</p><h2>Evidence Adequacy</h2><p class="lead">A check is useful only within the boundary of what it actually observes.</p><p>Browser tests can demonstrate selected journeys, but they do not establish that every authorization boundary was exercised. Dependency scanning can detect known vulnerability data, but it does not establish business correctness. An availability check can report process status without proving a release's critical workflow.</p><p>Adequacy therefore required a second layer of questions:</p><ul class="check-list"><li>Which required behaviors have no corresponding evidence?</li><li>Which roles, branches, integrations, or deployment states are outside the exercised set?</li><li>Does the evidence run against the same artifact and configuration being evaluated?</li><li>Can a failed check block the transition it is meant to govern?</li><li>Can another engineer reproduce the conclusion from the same inputs?</li></ul><div class="principle-block"><p class="label">Governing principle</p><p>A release gate should fail when release readiness cannot be established, not only when an implementation step errors.</p></div></section>
 
-          <section id="outcome" class="case-section"><p class="section-number">09</p><h2>Outcome</h2><p class="lead">The practical result was a more inspectable route from change to release: explicit rules, repeatable verification, bounded evidence, and defined recovery behavior.</p><p>The work connected application architecture, data, browser behavior, security, reporting, delivery, and operations under one assurance model. This reduced dependence on one person remembering the complete procedure and made failures more actionable because each gate represented a stated property.</p><div class="metric-note"><strong>Public performance observation</strong><p>A reporting performance investigation showed that the apparent performance problem was primarily a delivery-architecture problem. Changing how results became available substantially reduced time to first useful content without exposing private workload scale or operational configuration.</p></div><p class="disclosure-note">This case study intentionally omits private code, data, credentials, customer details, topology, security implementation, and proprietary operational specifics. It describes engineering reasoning and publicly safe architecture only.</p></section>
+          <section id="outcome" class="case-section"><p class="section-number">09</p><h2>Outcome</h2><p class="lead">The result was a clearer route from change to release: explicit rules, repeatable verification, defined coverage, and a tested recovery path.</p><p>Application behavior, data, browser workflows, security, reporting, delivery, and recovery were evaluated as parts of the same release process. The result depended less on remembered procedure, and failed gates identified the property that had not been established.</p><div class="metric-note"><strong>Performance example</strong><p>A reporting performance investigation showed that the main source of perceived latency was the delivery model rather than report computation. Changing how results became available substantially reduced time to first useful content.</p></div><p class="disclosure-note">This case study describes the engineering decisions at a public-safe level and omits confidential implementation, data, and operational details.</p></section>
 
           <nav class="case-next" aria-label="Next case study"><p class="eyebrow">Next case study</p><a href="/work/strling/"><span>STRling</span><strong>From helper API to compiler architecture</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
         </div>
@@ -141,17 +141,16 @@
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div class="footer-identity">
-          <span class="eyebrow">Professional identity</span>
           <p class="footer-name">Timothy Macfarlane</p>
           <p>Software Architect &amp; Engineer</p>
-          <p class="footer-note">Architecture, modernization, assurance, release engineering, and developer tooling.</p>
+          <p class="footer-note">Application architecture, modernization, software assurance, release engineering, and developer tooling.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
           <p class="footer-heading">Explore</p>
           <ul><li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li><a href="/approach/">Approach</a></li><li><a href="/background/">Background</a></li><li><a href="/about/">About</a></li></ul>
         </nav>
         <div class="footer-links">
-          <p class="footer-heading">Public surfaces</p>
+          <p class="footer-heading">Elsewhere</p>
           <ul>
             <li><a href="https://github.com/TheCyberLocal" rel="me noopener noreferrer">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/tzm01" rel="me noopener noreferrer">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -162,7 +161,7 @@
       </div>
       <div class="shell footer-base">
         <p>&copy; 2026 Timothy Macfarlane</p>
-        <p>Static, accessible, and built for durable public reference.</p>
+        <p>Built and maintained by Timothy Macfarlane.</p>
       </div>
     </footer>
     <script src="/assets/js/site.js" defer></script>
