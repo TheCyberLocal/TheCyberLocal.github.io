@@ -374,7 +374,7 @@ function workPage() {
               <div><dt>Problem</dt><dd>Legacy behavior, changing workflows, and release confidence crossed application, data, browser, and infrastructure boundaries.</dd></div>
               <div><dt>Non-obvious point</dt><dd>The quality of a conclusion depends on the coverage and adequacy of its evidence, not the color of a checkmark.</dd></div>
               <div><dt>Responsibility</dt><dd>Application architecture, workflow modeling, contract hardening, testing architecture, release engineering, performance, and production operations.</dd></div>
-              <div><dt>Demonstrates</dt><dd>Software assurance, ASP.NET Core engineering, SQL Server modernization, Playwright verification, IIS delivery, and explicit rollback design.</dd></div>
+              <div><dt>Demonstrates</dt><dd>Software assurance, production application engineering, browser verification, staged delivery, and explicit recovery design.</dd></div>
             </dl>
             ${textLink("Examine the case study", "/work/agent-portal/", { className: "button button-secondary" })}
           </div>
@@ -404,7 +404,7 @@ function workPage() {
 
 function agentPortalPage() {
   const description =
-    "Agent Portal case study by Timothy Macfarlane: ASP.NET Core architecture, testing and software assurance, security verification, release engineering, IIS, and rollback.";
+    "Agent Portal case study by Timothy Macfarlane covering production application architecture, software assurance, release engineering, and reproducible operational recovery.";
   const schema = graph({
     "@type": "TechArticle",
     "@id": `${siteUrl}/work/agent-portal/#case-study`,
@@ -412,7 +412,7 @@ function agentPortalPage() {
     headline: "Agent Portal: Building an Evidence System for Release Confidence",
     description,
     author: { "@id": personId },
-    about: ["software assurance", "ASP.NET Core", "testing architecture", "release engineering", "IIS", "blue-green deployment"],
+    about: ["software assurance", "application architecture", "testing architecture", "release engineering", "operational reliability", "reproducible software engineering"],
   });
   const body = `
     <article>
@@ -423,7 +423,7 @@ function agentPortalPage() {
             <div><p class="eyebrow">Case study 01 <span>Enterprise application</span></p><h1>Agent Portal</h1><p class="case-subtitle">Building an evidence system for application correctness, release readiness, and operational recovery.</p></div>
             <dl class="case-facts">
               <div><dt>Scope</dt><dd>Architecture through production operations</dd></div>
-              <div><dt>Environment</dt><dd>ASP.NET Core, SQL Server, IIS, Windows</dd></div>
+              <div><dt>Environment</dt><dd>Production Microsoft web application stack</dd></div>
               <div><dt>Primary lens</dt><dd>Software assurance and reproducibility</dd></div>
               <div><dt>Disclosure</dt><dd>Publicly safe architecture only</dd></div>
             </dl>
@@ -461,13 +461,13 @@ function agentPortalPage() {
             <li><span>A1</span><div><strong>Green tests represent important behavior.</strong><p>That is true only when the tests exercise the workflows, boundaries, roles, and failure paths relevant to the release.</p></div></li>
             <li><span>A2</span><div><strong>Existing behavior is a coherent specification.</strong><p>Legacy behavior can contain contradictions, accidental coupling, and rules that live only in operator memory.</p></div></li>
             <li><span>A3</span><div><strong>Application and data contracts agree.</strong><p>Model validation, database constraints, serialization, and integration expectations can each enforce a different rule.</p></div></li>
-            <li><span>A4</span><div><strong>A deployable artifact is an operable release.</strong><p>Artifact creation does not prove environment readiness, routing behavior, authorization, health, or rollback.</p></div></li>
+            <li><span>A4</span><div><strong>A deployable artifact is an operable release.</strong><p>Artifact creation does not prove environment readiness, authorization, acceptance behavior, or recovery.</p></div></li>
             <li><span>A5</span><div><strong>The verification process is repeatable.</strong><p>A correct sequence performed manually once may still fail as a recurring release mechanism.</p></div></li>
           </ul></section>
 
           <section id="constraints" class="case-section"><p class="section-number">04</p><h2>Constraints</h2><div class="constraint-grid">
             <article><h3>Live operational context</h3><p>Business workflows and reporting needs continued while behavior was normalized and the assurance surface expanded.</p></article>
-            <article><h3>Established platform</h3><p>ASP.NET Core MVC, EF Core, SQL Server, browser behavior, IIS, and Windows infrastructure formed the practical system boundary.</p></article>
+            <article><h3>Established platform</h3><p>A mature Microsoft web application, relational data layer, browser workflows, and established production infrastructure formed the practical system boundary.</p></article>
             <article><h3>Legacy knowledge</h3><p>Some requirements were embedded in existing code, data shape, reports, or human procedure rather than an explicit contract.</p></article>
             <article><h3>Safe disclosure</h3><p>Private source, production data, customer information, credentials, and proprietary operational details remain outside this case study.</p></article>
           </div></section>
@@ -478,9 +478,9 @@ function agentPortalPage() {
             <article><span>Application</span><div><h3>Normalize behavior at explicit boundaries</h3><p>Workflow rules were moved out of scattered UI assumptions and into server-side validation, domain behavior, and durable data constraints where appropriate.</p></div></article>
             <article><span>Contracts</span><div><h3>Make integration expectations inspectable</h3><p>Request shape, authorization, persistence behavior, and downstream assumptions were hardened so incompatible states could fail clearly and early.</p></div></article>
             <article><span>Browser</span><div><h3>Exercise behavior where users experience it</h3><p>Playwright automation covered consequential browser journeys, including role-sensitive behavior and the integration between rendered UI, application logic, and data.</p></div></article>
-            <article><span>Release</span><div><h3>Encode the route to production</h3><p>Deterministic profiles, hard gates, deployment checks, and IIS blue-green switching reduced the number of release decisions dependent on memory.</p></div></article>
-            <article><span>Recovery</span><div><h3>Make rollback an explicit behavior</h3><p>The release mechanism preserved a known slot and defined the routing transition needed to restore service when acceptance checks failed.</p></div></article>
-            <article><span>Reporting</span><div><h3>Optimize the delivery model</h3><p>For large SSRS output, delivery moved from waiting on a complete PDF toward direct HTML5 report rendering, allowing useful content to appear before the entire report was transferred.</p></div></article>
+            <article><span>Release</span><div><h3>Encode the route to production</h3><p>Deterministic profiles, hard gates, staged deployment automation, and acceptance checks reduced the number of release decisions dependent on memory.</p></div></article>
+            <article><span>Recovery</span><div><h3>Make rollback an explicit behavior</h3><p>The release mechanism included an explicit recovery path capable of reversing a failed release when acceptance checks did not hold.</p></div></article>
+            <article><span>Reporting</span><div><h3>Optimize the delivery model</h3><p>A reporting performance investigation showed that much of the perceived latency came from the delivery model rather than report computation itself. Moving from complete-document generation toward interactive rendering substantially reduced time to first useful content.</p></div></article>
           </div></section>
 
           <section id="verification" class="case-section"><p class="section-number">07</p><h2>Verification</h2><p>Different properties required different evidence. No single test layer was allowed to stand in for all of them.</p><div class="evidence-table-wrap"><table class="evidence-table"><thead><tr><th>Property</th><th>Evidence mechanism</th><th>What it can establish</th></tr></thead><tbody>
@@ -489,13 +489,13 @@ function agentPortalPage() {
             <tr><td>Security</td><td>Role-aware scenarios and security checks</td><td>Protected behavior is evaluated under the identities and paths that matter.</td></tr>
             <tr><td>Dependencies</td><td>Direct and transitive analysis</td><td>Known package risk is evaluated beyond top-level references.</td></tr>
             <tr><td>Artifact</td><td>Deterministic build and syntax checks</td><td>The candidate release is structurally valid and reproducibly produced.</td></tr>
-            <tr><td>Deployment</td><td>Health, routing, and acceptance checks</td><td>The artifact operates in its target environment after traffic transition.</td></tr>
-            <tr><td>Recovery</td><td>Explicit rollback path</td><td>A failed release has a defined operational reversal.</td></tr>
+            <tr><td>Deployment</td><td>Deployment and acceptance validation</td><td>The candidate operates correctly in its target environment.</td></tr>
+            <tr><td>Recovery</td><td>Verified recovery procedure</td><td>Failed releases have a defined and reproducible reversal path.</td></tr>
           </tbody></table></div></section>
 
-          <section id="evidence-adequacy" class="case-section"><p class="section-number">08</p><h2>Evidence Adequacy</h2><p class="lead">A check is useful only within the boundary of what it actually observes.</p><p>Browser tests can demonstrate selected journeys, but they do not establish that every authorization boundary was exercised. Dependency scanning can detect known vulnerability data, but it does not establish business correctness. A health endpoint can report process availability without proving a release's critical workflow.</p><p>Adequacy therefore required a second layer of questions:</p><ul class="check-list"><li>Which required behaviors have no corresponding evidence?</li><li>Which roles, branches, integrations, or deployment states are outside the exercised set?</li><li>Does the evidence run against the same artifact and configuration being evaluated?</li><li>Can a failed check block the transition it is meant to govern?</li><li>Can another engineer reproduce the conclusion from the same inputs?</li></ul><div class="principle-block"><p class="label">Governing principle</p><p>A release gate should fail when the required conclusion cannot be established, not only when a known implementation step throws an error.</p></div></section>
+          <section id="evidence-adequacy" class="case-section"><p class="section-number">08</p><h2>Evidence Adequacy</h2><p class="lead">A check is useful only within the boundary of what it actually observes.</p><p>Browser tests can demonstrate selected journeys, but they do not establish that every authorization boundary was exercised. Dependency scanning can detect known vulnerability data, but it does not establish business correctness. An availability check can report process status without proving a release's critical workflow.</p><p>Adequacy therefore required a second layer of questions:</p><ul class="check-list"><li>Which required behaviors have no corresponding evidence?</li><li>Which roles, branches, integrations, or deployment states are outside the exercised set?</li><li>Does the evidence run against the same artifact and configuration being evaluated?</li><li>Can a failed check block the transition it is meant to govern?</li><li>Can another engineer reproduce the conclusion from the same inputs?</li></ul><div class="principle-block"><p class="label">Governing principle</p><p>A release gate should fail when the required conclusion cannot be established, not only when a known implementation step throws an error.</p></div></section>
 
-          <section id="outcome" class="case-section"><p class="section-number">09</p><h2>Outcome</h2><p class="lead">The practical result was a more inspectable route from change to release: explicit rules, repeatable verification, bounded evidence, and defined recovery behavior.</p><p>The work connected application architecture, data, browser behavior, security, reporting, delivery, and operations under one assurance model. This reduced dependence on one person remembering the complete procedure and made failures more actionable because each gate represented a stated property.</p><div class="metric-note"><strong>Public performance observation</strong><p>In a development comparison for a 1,000-page SSRS report, direct HTML5 delivery made the first page interactive in roughly 2 seconds instead of waiting roughly 15 seconds for a complete PDF. This is a delivery-architecture observation, not a claim about every report or production condition.</p></div><p class="disclosure-note">This case study intentionally omits private code, data, credentials, customer details, and proprietary operational specifics. It describes engineering reasoning and publicly safe architecture only.</p></section>
+          <section id="outcome" class="case-section"><p class="section-number">09</p><h2>Outcome</h2><p class="lead">The practical result was a more inspectable route from change to release: explicit rules, repeatable verification, bounded evidence, and defined recovery behavior.</p><p>The work connected application architecture, data, browser behavior, security, reporting, delivery, and operations under one assurance model. This reduced dependence on one person remembering the complete procedure and made failures more actionable because each gate represented a stated property.</p><div class="metric-note"><strong>Public performance observation</strong><p>A reporting performance investigation showed that the apparent performance problem was primarily a delivery-architecture problem. Changing how results became available substantially reduced time to first useful content without exposing private workload scale or operational configuration.</p></div><p class="disclosure-note">This case study intentionally omits private code, data, credentials, customer details, topology, security implementation, and proprietary operational specifics. It describes engineering reasoning and publicly safe architecture only.</p></section>
 
           <nav class="case-next" aria-label="Next case study"><p class="eyebrow">Next case study</p><a href="/work/strling/"><span>STRling</span><strong>From helper API to compiler architecture</strong>${icon("arrow")}</a></nav>
         </div>
@@ -617,7 +617,7 @@ function backgroundPage() {
   const body = `
     <section class="page-hero background-hero" aria-labelledby="background-title"><div class="shell page-hero-grid"><div>${breadcrumb([{ label: "Home", href: "/" }, { label: "Background" }])}<p class="eyebrow">Professional background</p><h1 id="background-title">Capability built by following problems across their boundaries.</h1></div><div class="page-intro"><p>Timothy's work crosses application code, databases, browser behavior, infrastructure, deployment, reporting, and operational process because important rules rarely stop at one technical layer.</p><p>The continuity is the reasoning method, not the number of technologies listed.</p></div></div></section>
 
-    <section class="section current-role" aria-labelledby="current-role-title"><div class="shell role-grid"><div><p class="eyebrow">Current work</p><h2 id="current-role-title">Software architecture and hands-on engineering at Kenneth Froom Tours.</h2></div><div><p>Timothy's current role combines architecture with direct responsibility for production application behavior. The work includes modernizing legacy workflows, developing an ASP.NET Core portal, improving data and reporting systems, strengthening verification, and making Windows deployment and recovery more repeatable.</p><p>This is full dependency-chain work: a rule may begin in a business workflow, appear in a database migration, require an application contract, affect a browser journey, and finish as a release or operational check.</p><a class="text-link" href="${links.linkedin}" rel="me noopener noreferrer">Professional history on LinkedIn${icon("external")}</a></div></div></section>
+    <section class="section current-role" aria-labelledby="current-role-title"><div class="shell role-grid"><div><p class="eyebrow">Current work</p><h2 id="current-role-title">Software architecture and hands-on engineering at Kenneth Froom Tours.</h2></div><div><p>Timothy's current role combines software architecture with hands-on responsibility for production systems, modernization, data and reporting, verification, and operational reliability.</p><p>The work follows important rules across application, data, integration, and operational boundaries so changes remain coherent from implementation through release.</p><a class="text-link" href="${links.linkedin}" rel="me noopener noreferrer">Professional history on LinkedIn${icon("external")}</a></div></div></section>
 
     <section class="section capability-section" aria-labelledby="capabilities-title"><div class="shell"><div class="section-heading split-heading"><div><p class="eyebrow">Applied domains</p><h2 id="capabilities-title">Technical capability in context.</h2></div><p>Tools are grouped by the work they enable and the responsibilities they carry.</p></div><div class="domain-list">
       <article><div class="domain-number">01</div><div><h3>Application Engineering</h3><p>Production web applications, workflow modeling, server-rendered interfaces, API and persistence boundaries, authorization, performance, and maintainability.</p><ul class="tag-list"><li>ASP.NET Core</li><li>MVC</li><li>EF Core</li><li>JavaScript</li><li>TypeScript</li></ul></div><p class="domain-outcome">Places behavior and business rules in boundaries that can be understood, enforced, and changed safely.</p></article>

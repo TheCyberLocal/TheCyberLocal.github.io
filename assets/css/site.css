@@ -391,7 +391,8 @@ p:last-child {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(4rem, 9vw, 8rem);
+  padding-top: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
 }
 
 .hero::before {
@@ -846,7 +847,8 @@ p:last-child {
 .case-hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5rem);
   background: var(--bg-elevated);
   border-bottom: 1px solid var(--line);
 }
@@ -2015,7 +2017,7 @@ p:last-child {
 .not-found .shell {
   min-height: 55vh;
   display: grid;
-  align-content: center;
+  align-content: start;
 }
 
 .not-found h1 {
