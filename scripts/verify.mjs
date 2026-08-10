@@ -34,6 +34,12 @@ const expectedExternalLinks = [
   "https://strling-lang.netlify.app/",
   "mailto:timdiscovers@gmail.com",
 ];
+const buttonPages = new Map([
+  ["index.html", ["View selected work", "Read the approach"]],
+  ["work/index.html", ["Read the case study", "Read the case study"]],
+  ["work/strling/index.html", ["Visit the STRling website", "View source", "Explore STRling", "Browse the public repository"]],
+  ["404.html", ["Return home", "Browse selected work"]],
+]);
 
 const errors = [];
 const titles = new Map();
@@ -145,6 +151,35 @@ const allHtml = (await Promise.all(requiredPages.map((file) => readFile(path.joi
 for (const expected of expectedExternalLinks) {
   if (!allHtml.includes(expected)) fail(`Required public surface is not linked: ${expected}`);
 }
+
+for (const [relative, expectedLabels] of buttonPages) {
+  const html = await readFile(path.join(root, relative), "utf8");
+  const buttons = [...html.matchAll(/<a\b([^>]*\bclass="[^"]*\bbutton\b[^"]*"[^>]*)>([\s\S]*?)<\/a>/gi)];
+  const labels = buttons.map((button) => button[2].replace(/<svg[\s\S]*?<\/svg>/gi, "").replace(/<[^>]+>/g, "").trim());
+
+  if (buttons.length !== expectedLabels.length) {
+    fail(`${relative}: expected ${expectedLabels.length} CTA buttons, found ${buttons.length}`);
+  }
+  if (JSON.stringify(labels) !== JSON.stringify(expectedLabels)) {
+    fail(`${relative}: CTA button labels or order changed`);
+  }
+
+  for (const button of buttons) {
+    if (!/\bbutton-(?:primary|secondary)\b/.test(button[1])) fail(`${relative}: button is missing its visual variant`);
+    if (!/<svg\b[^>]*\bclass="[^"]*\bicon\b[^"]*"/i.test(button[2])) fail(`${relative}: button icon is missing from the button element`);
+  }
+}
+
+const siteCss = await readFile(path.join(root, "assets/css/site.css"), "utf8");
+const buttonRule = getFirst(siteCss, /(?:^|\n)\.button\s*\{([^}]*)\}/i);
+const buttonIconRule = getFirst(siteCss, /(?:^|\n)\.button\s+\.icon\s*\{([^}]*)\}/i);
+const textLinkRule = getFirst(siteCss, /(?:^|\n)\.text-link\s*\{([^}]*)\}/i);
+
+for (const declaration of ["display: inline-flex", "align-items: center", "justify-content: center", "gap:", "width: fit-content"]) {
+  if (!buttonRule.includes(declaration)) fail(`Shared .button rule is missing ${declaration}`);
+}
+if (!buttonIconRule.includes("flex: none")) fail("Shared .button icon can shrink or escape its CTA layout");
+if (!textLinkRule.includes("display: inline-flex")) fail("Shared .text-link layout contract changed");
 
 const siteJs = await readFile(path.join(root, "assets/js/site.js"), "utf8");
 if (Buffer.byteLength(siteJs, "utf8") > 4096) fail("Runtime JavaScript exceeds the 4 KB maintenance budget");

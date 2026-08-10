@@ -363,10 +363,19 @@ p:last-child {
 .button {
   min-height: 3.1rem;
   padding: 0.85rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
   border: 1px solid var(--line-strong);
   justify-content: center;
   font-size: 0.78rem;
   letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.button .icon {
+  flex: none;
 }
 
 .button-primary {
