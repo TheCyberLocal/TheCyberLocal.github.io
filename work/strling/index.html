@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STRling Compiler Case Study | Timothy Macfarlane</title>
+    <meta name="description" content="STRling case study by Timothy Macfarlane: a maintainable regex DSL and compiler architecture using an AST, intermediate representation, target emission, testing, and polyglot conformance.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://thecyberlocal.github.io/work/strling/">
+    <meta name="author" content="Timothy Macfarlane">
+    <meta name="theme-color" content="#0B0F14">
+    <meta property="og:site_name" content="Timothy Macfarlane">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="STRling Compiler Case Study | Timothy Macfarlane">
+    <meta property="og:description" content="STRling case study by Timothy Macfarlane: a maintainable regex DSL and compiler architecture using an AST, intermediate representation, target emission, testing, and polyglot conformance.">
+    <meta property="og:url" content="https://thecyberlocal.github.io/work/strling/">
+    <meta property="og:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
+    <meta property="og:image:width" content="976">
+    <meta property="og:image:height" content="976">
+    <meta property="og:image:alt" content="Portrait of Timothy Macfarlane">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="STRling Compiler Case Study | Timothy Macfarlane">
+    <meta name="twitter:description" content="STRling case study by Timothy Macfarlane: a maintainable regex DSL and compiler architecture using an AST, intermediate representation, target emission, testing, and polyglot conformance.">
+    <meta name="twitter:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <script>document.documentElement.classList.add("js");</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://thecyberlocal.github.io/#timothy-macfarlane","name":"Timothy Macfarlane","alternateName":"TheCyberLocal","url":"https://thecyberlocal.github.io/","image":"https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg","jobTitle":"Software Architect & Engineer","description":"Timothy Macfarlane is a software architect and engineer whose work spans application architecture, software modernization, testing and assurance, release engineering, production systems, and developer tooling.","sameAs":["https://github.com/TheCyberLocal","https://www.linkedin.com/in/tzm01"],"knowsAbout":["software architecture","software assurance","release engineering","developer tooling","compiler engineering","ASP.NET Core","SQL Server","software modernization","AI-assisted engineering","testing architecture","reproducible software engineering"]},{"@type":"SoftwareSourceCode","@id":"https://thecyberlocal.github.io/work/strling/#project","name":"STRling","headline":"STRling: From Regex Helper to Compiler Architecture","description":"STRling case study by Timothy Macfarlane: a maintainable regex DSL and compiler architecture using an AST, intermediate representation, target emission, testing, and polyglot conformance.","url":"https://strling-lang.netlify.app/","codeRepository":"https://github.com/strling-lang/strling","creator":{"@id":"https://thecyberlocal.github.io/#timothy-macfarlane"},"programmingLanguage":["Rust","TypeScript","Python"],"keywords":"STRling compiler, DSL, AST, intermediate representation, regex, developer tooling"}]}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" data-site-header>
+      <div class="shell header-inner">
+        <a class="site-brand" href="/" aria-label="Timothy Macfarlane, home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy">
+            <span class="brand-name">Timothy Macfarlane</span>
+            <span class="brand-role">Software Architect &amp; Engineer</span>
+          </span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-label">Menu</span>
+          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
+        </button>
+        <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+          <ul>
+            <li><a href="/">Home</a></li><li><a href="/work/" aria-current="page">Work</a></li><li><a href="/approach/">Approach</a></li><li><a href="/background/">Background</a></li><li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+    <article>
+      <header class="case-hero strling-hero">
+        <div class="shell">
+          <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li aria-current="page">STRling</li></ol></nav>
+          <div class="case-title-grid">
+            <div><p class="eyebrow">Case study 02 <span>Independent project</span></p><h1>STRling</h1><p class="case-subtitle">Turning string patterns into structured, target-aware software artifacts.</p><div class="hero-actions"><a class="button button-primary" href="https://strling-lang.netlify.app/" rel="noopener noreferrer">Open the STRling project site<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="button button-secondary" href="https://github.com/strling-lang/strling" rel="noopener noreferrer">View source<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+            <dl class="case-facts">
+              <div><dt>Category</dt><dd>DSL and compiler tooling</dd></div>
+              <div><dt>Architecture</dt><dd>DSL to AST to IR to target emitter</dd></div>
+              <div><dt>Primary concern</dt><dd>Maintainable polyglot semantics</dd></div>
+              <div><dt>Canonical product site</dt><dd>strling-lang.netlify.app</dd></div>
+            </dl>
+          </div>
+          <div class="strling-pipeline" aria-label="STRling compiler pipeline: a developer-authored DSL becomes an abstract syntax tree, then a target-neutral intermediate representation, then target regex output">
+            <div><span>Author</span><strong>STRling DSL</strong></div><b aria-hidden="true"></b><div><span>Parse</span><strong>AST</strong></div><b aria-hidden="true"></b><div><span>Compile</span><strong>IR</strong></div><b aria-hidden="true"></b><div class="pipeline-output"><span>Emit</span><strong>Target regex</strong></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="shell case-layout">
+        <aside class="case-index" aria-label="Case study contents"><p class="label">Case index</p><ol>
+          <li><a href="#strling-problem">Problem</a></li><li><a href="#strling-evolution">Why a compiler</a></li><li><a href="#strling-architecture">Architecture</a></li><li><a href="#strling-polyglot">Polyglot consistency</a></li><li><a href="#strling-verification">Verification</a></li><li><a href="#strling-distribution">Distribution</a></li><li><a href="#strling-value">Engineering value</a></li>
+        </ol></aside>
+        <div class="case-content">
+          <section id="strling-problem" class="case-section"><p class="section-number">01</p><h2>The Problem With Raw Regex</h2><p class="lead">Regular expressions are compact execution syntax, but compact execution syntax is a poor place to preserve software design knowledge.</p><p>A raw pattern hides boundaries between concepts. Composition can change precedence or capture behavior. Engine-specific details leak into application code. Reviewers must mentally reconstruct intent from punctuation, and long-term maintenance depends on somebody repeating that reconstruction correctly.</p><div class="contrast-example" aria-label="Comparison between raw regex and structured intent"><div><span>Compressed syntax</span><code>^(d{3})[-. ]?(d{3})[-. ]?(d{4})$</code></div><div><span>Preserved intent</span><code>start + areaCode + separator? + exchange + separator? + lineNumber + end</code></div></div><p>The issue was not that regex engines lacked power. The issue was that important knowledge lived in an opaque string with weak composition boundaries.</p></section>
+
+          <section id="strling-evolution" class="case-section"><p class="section-number">02</p><h2>Why the Solution Became a Compiler</h2><p>An initial helper layer can make pattern construction more readable. It cannot, by itself, provide a stable semantic model across runtimes, reason about structure before emission, or separate author intent from target syntax.</p><div class="question-callout"><p>What representation would let developers express pattern intent once, inspect it as structured data, transform it predictably, and emit valid syntax for different regex engines?</p></div><p>That question moved STRling beyond helper functions. A compiler pipeline became the mechanism needed to preserve meaning between a human-facing DSL and multiple target implementations.</p></section>
+
+          <section id="strling-architecture" class="case-section"><p class="section-number">03</p><h2>Compiler Architecture</h2><div class="architecture-stack">
+            <article><span>01</span><div><h3>DSL</h3><p>The authoring surface expresses concepts such as literals, groups, choices, boundaries, quantifiers, and reusable components without manually assembling target punctuation.</p></div></article>
+            <article><span>02</span><div><h3>Abstract syntax tree</h3><p>The AST records the program's authored structure. Nodes make nesting, composition, and invalid combinations explicit enough to inspect and validate.</p></div></article>
+            <article><span>03</span><div><h3>Intermediate representation</h3><p>The IR separates semantic intent from a particular regex flavor. It becomes the stable boundary for normalization, optimization, validation, and emitter behavior.</p></div></article>
+            <article><span>04</span><div><h3>Target emission</h3><p>Emitters translate the IR into syntax understood by a target engine. Target-specific choices stay at the edge instead of spreading through user-authored patterns.</p></div></article>
+          </div><p>This placement of responsibility matters. The DSL owns author ergonomics, the AST owns source structure, the IR owns target-neutral meaning, and each emitter owns its target's syntax.</p></section>
+
+          <section id="strling-polyglot" class="case-section"><p class="section-number">04</p><h2>Polyglot Consistency</h2><p class="lead">A similar API in several languages is not enough. The important property is semantic agreement.</p><p>STRling's architecture is designed around a shared mental model across bindings and target engines. That requires decisions about node meaning, escaping, precedence, capture behavior, quantifier rules, and unsupported features to remain consistent even when host-language ergonomics differ.</p><div class="polyglot-model" aria-label="One semantic model connects language bindings to target emitters"><div class="model-core"><span>Shared semantic model</span><strong>AST + IR contracts</strong></div><div class="model-ring"><span>Rust</span><span>TypeScript</span><span>Python</span><span>Target engines</span></div></div><p>The governing rule is that host-language convenience cannot silently redefine compiler semantics. Differences must be explicit, testable, and located at a known boundary.</p></section>
+
+          <section id="strling-verification" class="case-section"><p class="section-number">05</p><h2>Testing and Reproducibility</h2><p>The compiler makes several levels of verification possible:</p><ul class="check-list"><li>DSL inputs produce the expected AST structure.</li><li>AST programs compile into the expected target-neutral IR.</li><li>IR fixtures emit the expected syntax for each supported target.</li><li>Emitted patterns demonstrate the intended positive and negative behavior.</li><li>Bindings exercise the same semantic cases rather than merely using similar test names.</li><li>Generated packages are derived from declared source and repeatable build steps.</li></ul><div class="principle-block"><p class="label">Evidence rule</p><p>String equality can verify emitted text. Behavioral fixtures are still needed to verify what that text does, and conformance coverage is needed to show which semantics were exercised across bindings.</p></div></section>
+
+          <section id="strling-distribution" class="case-section"><p class="section-number">06</p><h2>Developer Tooling and Distribution</h2><p>A compiler project is not complete at the compiler boundary. Package layout, host-language APIs, documentation, examples, versioning, release artifacts, and conformance data determine whether the architecture remains usable outside its source tree.</p><p>STRling treats these as part of the same reproducibility problem. A consumer should be able to identify the compiler version, reconstruct how an artifact was produced, and understand which language and target behaviors that artifact supports.</p><div class="distribution-grid"><span>Source specification</span><span>Compiler core</span><span>Language binding</span><span>Package artifact</span><span>Documentation</span><span>Conformance evidence</span></div></section>
+
+          <section id="strling-value" class="case-section"><p class="section-number">07</p><h2>What the Project Demonstrates</h2><p class="lead">STRling demonstrates Timothy's recurring move from a useful abstraction to a mechanism that changes where software knowledge lives.</p><p>The project replaces implicit precedence and engine knowledge with typed structure, explicit compilation stages, target-owned emission, and testable semantic contracts. It also exposes the next-order question: not only whether each implementation works, but whether the evidence is sufficient to claim consistency across the project.</p><p>The <a href="https://strling-lang.netlify.app/" rel="noopener noreferrer">STRling website</a> remains the canonical product and documentation surface. This portfolio case study explains the reasoning and engineering responsibility behind it.</p><div class="hero-actions"><a class="button button-primary" href="https://strling-lang.netlify.app/" rel="noopener noreferrer">Explore STRling<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="button button-secondary" href="https://github.com/strling-lang/strling" rel="noopener noreferrer">Browse the public repository<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></section>
+
+          <nav class="case-next" aria-label="Related page"><p class="eyebrow">Related page</p><a href="/approach/"><span>Approach</span><strong>The reasoning pattern behind the work</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+      </div>
+    </article></main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-identity">
+          <span class="eyebrow">Professional identity</span>
+          <p class="footer-name">Timothy Macfarlane</p>
+          <p>Software Architect &amp; Engineer</p>
+          <p class="footer-note">Architecture, modernization, assurance, release engineering, and developer tooling.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-heading">Explore</p>
+          <ul><li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li><a href="/approach/">Approach</a></li><li><a href="/background/">Background</a></li><li><a href="/about/">About</a></li></ul>
+        </nav>
+        <div class="footer-links">
+          <p class="footer-heading">Public surfaces</p>
+          <ul>
+            <li><a href="https://github.com/TheCyberLocal" rel="me noopener noreferrer">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/tzm01" rel="me noopener noreferrer">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="https://strling-lang.netlify.app/" rel="noopener noreferrer">STRling <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="mailto:timdiscovers@gmail.com">timdiscovers@gmail.com <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="shell footer-base">
+        <p>&copy; 2026 Timothy Macfarlane</p>
+        <p>Static, accessible, and built for durable public reference.</p>
+      </div>
+    </footer>
+    <script src="/assets/js/site.js" defer></script>
+  </body>
+</html>

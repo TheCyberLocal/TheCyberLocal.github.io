@@ -1,0 +1,15 @@
+{
+  "name": "timothy-macfarlane-reputation-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Timothy Macfarlane's multi-page professional reputation site.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/verify.mjs",
+    "test": "npm run build && npm run check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

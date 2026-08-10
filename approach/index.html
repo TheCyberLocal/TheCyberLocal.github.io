@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engineering Approach | Timothy Macfarlane</title>
+    <meta name="description" content="Timothy Macfarlane's engineering approach: question the formulation, expose assumptions, encode recurring rules, verify evidence adequacy, and make assurance reproducible.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://thecyberlocal.github.io/approach/">
+    <meta name="author" content="Timothy Macfarlane">
+    <meta name="theme-color" content="#0B0F14">
+    <meta property="og:site_name" content="Timothy Macfarlane">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Engineering Approach | Timothy Macfarlane">
+    <meta property="og:description" content="Timothy Macfarlane's engineering approach: question the formulation, expose assumptions, encode recurring rules, verify evidence adequacy, and make assurance reproducible.">
+    <meta property="og:url" content="https://thecyberlocal.github.io/approach/">
+    <meta property="og:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
+    <meta property="og:image:width" content="976">
+    <meta property="og:image:height" content="976">
+    <meta property="og:image:alt" content="Portrait of Timothy Macfarlane">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Engineering Approach | Timothy Macfarlane">
+    <meta name="twitter:description" content="Timothy Macfarlane's engineering approach: question the formulation, expose assumptions, encode recurring rules, verify evidence adequacy, and make assurance reproducible.">
+    <meta name="twitter:image" content="https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <script>document.documentElement.classList.add("js");</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://thecyberlocal.github.io/#timothy-macfarlane","name":"Timothy Macfarlane","alternateName":"TheCyberLocal","url":"https://thecyberlocal.github.io/","image":"https://thecyberlocal.github.io/assets/images/timothy-macfarlane.jpg","jobTitle":"Software Architect & Engineer","description":"Timothy Macfarlane is a software architect and engineer whose work spans application architecture, software modernization, testing and assurance, release engineering, production systems, and developer tooling.","sameAs":["https://github.com/TheCyberLocal","https://www.linkedin.com/in/tzm01"],"knowsAbout":["software architecture","software assurance","release engineering","developer tooling","compiler engineering","ASP.NET Core","SQL Server","software modernization","AI-assisted engineering","testing architecture","reproducible software engineering"]},{"@type":"TechArticle","@id":"https://thecyberlocal.github.io/approach/#article","url":"https://thecyberlocal.github.io/approach/","headline":"From Outcome to Reproducible Assurance","description":"Timothy Macfarlane's engineering approach: question the formulation, expose assumptions, encode recurring rules, verify evidence adequacy, and make assurance reproducible.","author":{"@id":"https://thecyberlocal.github.io/#timothy-macfarlane"},"about":["software architecture","software assurance","testing architecture","AI-assisted engineering","reproducibility"]}]}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" data-site-header>
+      <div class="shell header-inner">
+        <a class="site-brand" href="/" aria-label="Timothy Macfarlane, home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy">
+            <span class="brand-name">Timothy Macfarlane</span>
+            <span class="brand-role">Software Architect &amp; Engineer</span>
+          </span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-label">Menu</span>
+          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
+        </button>
+        <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+          <ul>
+            <li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li><a href="/approach/" aria-current="page">Approach</a></li><li><a href="/background/">Background</a></li><li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+    <section class="page-hero approach-hero" aria-labelledby="approach-title"><div class="shell"><nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Approach</li></ol></nav><div class="approach-title-grid"><div><p class="eyebrow">Engineering approach</p><h1 id="approach-title">From outcome to reproducible assurance.</h1></div><p class="page-lede">The starting point is not the requested task. It is the conclusion that actually needs to be true, followed backward through its assumptions and forward into mechanisms that can establish it repeatedly.</p></div><div class="reasoning-map" aria-label="Outcome leads to assumptions, governing rules, mechanisms, evidence, evidence adequacy, and reproducible assurance. Verification can reveal assumptions and return the process upstream."><ol><li><span>01</span>Outcome</li><li><span>02</span>Assumptions</li><li><span>03</span>Governing rules</li><li><span>04</span>Mechanism</li><li><span>05</span>Evidence</li><li><span>06</span>Evidence adequacy</li><li><span>07</span>Reproducible assurance</li></ol><div class="return-loop" aria-hidden="true"><span>new assumption discovered</span></div></div></div></section>
+
+    <section class="section approach-content"><div class="shell approach-grid">
+      <aside class="approach-aside"><p class="label">Recursive by design</p><p>Verification can reveal another assumption. When it does, the reasoning returns upstream. The goal is not a linear checklist. It is an inspectable chain between a conclusion and the evidence allowed to support it.</p></aside>
+      <div class="approach-sections">
+        <section><div class="approach-index"><span>01</span><i></i></div><div><p class="eyebrow">Question the formulation</p><h2>The requested task may not represent the decision that matters.</h2><p>“Do the tests pass?” asks about a test runner. “Do we possess sufficient evidence to release this application?” asks about behavior, security, dependencies, infrastructure, authorization, integrations, deployment, and recovery.</p><p>Changing the formulation changes the architecture of the answer. The new question reveals work that the original task could not contain.</p></div></section>
+        <section><div class="approach-index"><span>02</span><i></i></div><div><p class="eyebrow">Expose assumptions</p><h2>Trace conclusions backward through the conditions they require.</h2><p>If a release is called safe because its tests pass, the conclusion assumes that the tests exercise the properties that matter. It also assumes the environment is representative, the data contracts are valid, the artifact is the one being deployed, and failure can be reversed.</p><p>Each condition can contain another assumption. Timothy makes those dependencies explicit until the important uncertainty is visible enough to govern.</p></div></section>
+        <section><div class="approach-index"><span>03</span><i></i></div><div><p class="eyebrow">Define the standard</p><h2>Determine what success means before choosing a measurement.</h2><p>A number is useful only in relation to a defined property. Code coverage does not define behavioral completeness. A latency average does not define an acceptable worst case. A deployment success signal does not define correct authorization.</p><p>The standard names the property, its boundary, acceptable evidence, failure behavior, and any residual decision that remains with a human.</p></div></section>
+        <section><div class="approach-index"><span>04</span><i></i></div><div><p class="eyebrow">Make knowledge explicit</p><h2>Put important rules where they can be inspected.</h2><p>Architecture is the placement of knowledge and responsibility. A rule may belong in code, configuration, data, a contract, or an operational process. The choice depends on who owns it, how often it changes, what must enforce it, and which invalid states should be impossible.</p><div class="knowledge-grid"><span><strong>Code</strong> invariant behavior</span><span><strong>Configuration</strong> declared operational choices</span><span><strong>Data</strong> durable facts and constraints</span><span><strong>Contracts</strong> boundary expectations</span><span><strong>Process</strong> consequential human authority</span><span><strong>Observability</strong> behavior known only at runtime</span></div></div></section>
+        <section><div class="approach-index"><span>05</span><i></i></div><div><p class="eyebrow">Encode what repeats</p><h2>Preserve recurring decisions in mechanisms.</h2><p>When an important decision will recur, make as much of it as practical something the system can know and verify. That can mean a database constraint, an API contract, a deterministic test profile, a release gate, a policy check, an infrastructure script, or an explicit rollback transition.</p><p>The mechanism is not valuable because it is automated. It is valuable because it preserves a defined decision with less drift and clearer failure.</p></div></section>
+        <section><div class="approach-index"><span>06</span><i></i></div><div><p class="eyebrow">Verify the evidence</p><h2>A passing test establishes only what the test evaluates.</h2><p>Every evidence source has a boundary. Unit tests can establish local behavior under supplied inputs. Browser automation can establish selected integrated journeys. Dependency analysis can establish exposure to known advisories. Deployment checks can establish selected properties of a running environment.</p><p>No evidence source inherits authority over properties it did not observe.</p></div></section>
+        <section><div class="approach-index"><span>07</span><i></i></div><div><p class="eyebrow">Verify verification</p><h2>Coverage and adequacy are properties that also need evidence.</h2><p>A browser suite may pass while omitting a role. Security checks may evaluate direct packages while missing transitive dependencies. Contract tests may validate shape without validating meaning. Deployment verification may call a health endpoint without exercising a critical workflow.</p><div class="verification-layers"><div><span>Layer 1</span><strong>Did the check pass?</strong></div><div><span>Layer 2</span><strong>Did the check cover the required property?</strong></div><div><span>Layer 3</span><strong>Does the combined evidence justify the conclusion?</strong></div></div></div></section>
+        <section><div class="approach-index"><span>08</span></div><div><p class="eyebrow">Reproducibility</p><h2>Quality should not depend on remembering the right procedure.</h2><p>Thoughtful engineering becomes durable when another engineer, a CI runner, or a bounded agent can execute the same declared process against the same inputs and understand why it passed or failed.</p><p>Reproducibility includes the artifact, environment assumptions, verification profile, acceptance criteria, rejection behavior, and the evidence retained for review.</p></div></section>
+      </div>
+    </div></section>
+
+    <section class="section ai-section" aria-labelledby="ai-title"><div class="shell ai-grid"><div><p class="eyebrow">AI-assisted engineering</p><h2 id="ai-title">More execution capacity, the same obligation to justify conclusions.</h2></div><div><p>Timothy uses AI to expand research, synthesis, planning, implementation, and analysis. The useful unit is not an unbounded prompt. It is a workflow with supplied context, explicit scope, bounded authority, acceptance criteria, rejection criteria, and independent verification.</p><ul class="ai-controls"><li><span>01</span>Context is supplied, not assumed.</li><li><span>02</span>Authority is limited to the intended decision.</li><li><span>03</span>Outputs face deterministic checks where practical.</li><li><span>04</span>Consequential decisions retain human authority.</li></ul><p class="lead">AI increases execution capacity without eliminating the need for epistemic discipline.</p></div></div></section></main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-identity">
+          <span class="eyebrow">Professional identity</span>
+          <p class="footer-name">Timothy Macfarlane</p>
+          <p>Software Architect &amp; Engineer</p>
+          <p class="footer-note">Architecture, modernization, assurance, release engineering, and developer tooling.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-heading">Explore</p>
+          <ul><li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li><a href="/approach/">Approach</a></li><li><a href="/background/">Background</a></li><li><a href="/about/">About</a></li></ul>
+        </nav>
+        <div class="footer-links">
+          <p class="footer-heading">Public surfaces</p>
+          <ul>
+            <li><a href="https://github.com/TheCyberLocal" rel="me noopener noreferrer">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/tzm01" rel="me noopener noreferrer">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="https://strling-lang.netlify.app/" rel="noopener noreferrer">STRling <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M11 13l8-8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="mailto:timdiscovers@gmail.com">timdiscovers@gmail.com <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="shell footer-base">
+        <p>&copy; 2026 Timothy Macfarlane</p>
+        <p>Static, accessible, and built for durable public reference.</p>
+      </div>
+    </footer>
+    <script src="/assets/js/site.js" defer></script>
+  </body>
+</html>
