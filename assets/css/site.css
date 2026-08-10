@@ -19,7 +19,9 @@
   --max: 1200px;
   --text-max: 740px;
   --radius: 2px;
-  --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans:
+    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
@@ -39,7 +41,13 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    linear-gradient(90deg, transparent 0, transparent calc(50% - 0.5px), rgba(255,255,255,0.018) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(50% - 0.5px),
+      rgba(255, 255, 255, 0.018) 50%,
+      transparent calc(50% + 0.5px)
+    ),
     var(--bg);
   color: var(--text-soft);
   font-family: var(--sans);
@@ -156,9 +164,17 @@ a:hover {
   background: var(--accent);
 }
 
-.brand-mark span:nth-child(1) { height: 45%; opacity: 0.55; }
-.brand-mark span:nth-child(2) { height: 100%; }
-.brand-mark span:nth-child(3) { height: 72%; opacity: 0.75; }
+.brand-mark span:nth-child(1) {
+  height: 45%;
+  opacity: 0.55;
+}
+.brand-mark span:nth-child(2) {
+  height: 100%;
+}
+.brand-mark span:nth-child(3) {
+  height: 72%;
+  opacity: 0.75;
+}
 
 .brand-copy {
   display: grid;
@@ -417,7 +433,7 @@ p:last-child {
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 4.5rem 4.5rem;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 88%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent 88%);
   opacity: 0.23;
 }
 
@@ -562,8 +578,8 @@ p:last-child {
   display: grid;
   align-content: space-between;
   background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 2.5rem 2.5rem;
 }
 
@@ -594,12 +610,28 @@ p:last-child {
   opacity: 0.35;
 }
 
-.evidence-bars i:nth-child(1) { height: 55%; }
-.evidence-bars i:nth-child(2) { height: 82%; opacity: 0.7; }
-.evidence-bars i:nth-child(3) { height: 68%; }
-.evidence-bars i:nth-child(4) { height: 100%; opacity: 0.9; }
-.evidence-bars i:nth-child(5) { height: 74%; opacity: 0.55; }
-.evidence-bars i:nth-child(6) { height: 90%; opacity: 0.78; }
+.evidence-bars i:nth-child(1) {
+  height: 55%;
+}
+.evidence-bars i:nth-child(2) {
+  height: 82%;
+  opacity: 0.7;
+}
+.evidence-bars i:nth-child(3) {
+  height: 68%;
+}
+.evidence-bars i:nth-child(4) {
+  height: 100%;
+  opacity: 0.9;
+}
+.evidence-bars i:nth-child(5) {
+  height: 74%;
+  opacity: 0.55;
+}
+.evidence-bars i:nth-child(6) {
+  height: 90%;
+  opacity: 0.78;
+}
 
 .visual-status {
   justify-content: flex-start;
@@ -619,7 +651,11 @@ p:last-child {
   align-items: center;
   gap: 0.4rem;
   background:
-    radial-gradient(circle at 80% 15%, rgba(164, 140, 255, 0.09), transparent 30%),
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(164, 140, 255, 0.09),
+      transparent 30%
+    ),
     var(--bg-elevated);
 }
 
@@ -769,7 +805,9 @@ p:last-child {
 }
 
 .human-section {
-  background: linear-gradient(110deg, rgba(120, 160, 255, 0.055), transparent 38%), var(--surface);
+  background:
+    linear-gradient(110deg, rgba(120, 160, 255, 0.055), transparent 38%),
+    var(--surface);
 }
 
 .human-grid {
@@ -877,7 +915,9 @@ p:last-child {
   top: -11rem;
   border: 1px solid var(--line);
   border-radius: 50%;
-  box-shadow: 0 0 0 5rem rgba(255,255,255,0.006), 0 0 0 10rem rgba(255,255,255,0.004);
+  box-shadow:
+    0 0 0 5rem rgba(255, 255, 255, 0.006),
+    0 0 0 10rem rgba(255, 255, 255, 0.004);
   pointer-events: none;
 }
 
@@ -1099,7 +1139,7 @@ p:last-child {
   gap: 1rem 2rem;
   padding: 1.5rem;
   border: 1px solid var(--line-strong);
-  background: rgba(255,255,255,0.012);
+  background: rgba(255, 255, 255, 0.012);
 }
 
 .conclusion-node {
@@ -1174,7 +1214,11 @@ p:last-child {
 
 .strling-hero {
   background:
-    radial-gradient(circle at 75% 10%, rgba(164, 140, 255, 0.08), transparent 27%),
+    radial-gradient(
+      circle at 75% 10%,
+      rgba(164, 140, 255, 0.08),
+      transparent 27%
+    ),
     var(--bg-elevated);
 }
 
@@ -1540,8 +1584,8 @@ p:last-child {
   place-items: center;
   border: 1px solid var(--line);
   background:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     var(--surface);
   background-size: 2.5rem 2.5rem;
 }
@@ -1576,10 +1620,22 @@ p:last-child {
   color: var(--text-soft);
 }
 
-.model-ring span:nth-child(1) { top: 1.5rem; left: 2rem; }
-.model-ring span:nth-child(2) { top: 1.5rem; right: 2rem; }
-.model-ring span:nth-child(3) { bottom: 1.5rem; left: 2rem; }
-.model-ring span:nth-child(4) { bottom: 1.5rem; right: 2rem; }
+.model-ring span:nth-child(1) {
+  top: 1.5rem;
+  left: 2rem;
+}
+.model-ring span:nth-child(2) {
+  top: 1.5rem;
+  right: 2rem;
+}
+.model-ring span:nth-child(3) {
+  bottom: 1.5rem;
+  left: 2rem;
+}
+.model-ring span:nth-child(4) {
+  bottom: 1.5rem;
+  right: 2rem;
+}
 
 .distribution-grid,
 .knowledge-grid {
@@ -1672,7 +1728,9 @@ p:last-child {
   line-height: 1.4;
 }
 
-.reasoning-map li:last-child { border-right: 0; }
+.reasoning-map li:last-child {
+  border-right: 0;
+}
 
 .reasoning-map li span {
   color: var(--accent-strong);
@@ -1744,8 +1802,12 @@ p:last-child {
   border-bottom: 1px solid var(--line-strong);
 }
 
-.approach-sections > section:first-child { padding-top: 0; }
-.approach-sections > section:last-child { border-bottom: 0; }
+.approach-sections > section:first-child {
+  padding-top: 0;
+}
+.approach-sections > section:last-child {
+  border-bottom: 0;
+}
 
 .approach-index {
   display: grid;
@@ -1807,7 +1869,9 @@ p:last-child {
 }
 
 .ai-section {
-  background: linear-gradient(125deg, rgba(164, 140, 255, 0.07), transparent 45%), var(--surface);
+  background:
+    linear-gradient(125deg, rgba(164, 140, 255, 0.07), transparent 45%),
+    var(--surface);
 }
 
 .ai-grid h2 {
@@ -1994,6 +2058,7 @@ p:last-child {
 
 .surface-grid {
   margin-top: clamp(3rem, 7vw, 5rem);
+  margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.7rem;
@@ -2082,8 +2147,8 @@ p:last-child {
     border-right: 0;
   }
 
-  .process-flow li:nth-child(-n+4),
-  .reasoning-map li:nth-child(-n+4) {
+  .process-flow li:nth-child(-n + 4),
+  .reasoning-map li:nth-child(-n + 4) {
     border-bottom: 1px solid var(--line);
   }
 
@@ -2397,9 +2462,13 @@ p:last-child {
   }
 
   .model-ring span:nth-child(1),
-  .model-ring span:nth-child(3) { left: 0.5rem; }
+  .model-ring span:nth-child(3) {
+    left: 0.5rem;
+  }
   .model-ring span:nth-child(2),
-  .model-ring span:nth-child(4) { right: 0.5rem; }
+  .model-ring span:nth-child(4) {
+    right: 0.5rem;
+  }
 
   .case-next > a {
     grid-template-columns: 1fr auto;
