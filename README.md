@@ -15,7 +15,7 @@ Any static file server can serve the repository root after a build.
 
 ## Content and asset notes
 
-- `assets/images/timothy-macfarlane.jpg` is Timothy's existing authentic photo. CSS supplies the 4:5 editorial crop without altering or fabricating the portrait.
+- `assets/images/timothy-macfarlane.png` is Timothy's portrait, displayed at its natural square ratio without cropping or zoom.
 - Agent Portal material is intentionally limited to publicly safe architecture and engineering reasoning. Private source, credentials, production data, customer details, and proprietary operational specifics are excluded.
 - STRling's product and documentation site remains canonical at [strling-lang.netlify.app](https://strling-lang.netlify.app/).
 

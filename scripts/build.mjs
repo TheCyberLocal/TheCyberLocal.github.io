@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = "https://thecyberlocal.github.io";
-const portraitUrl = `${siteUrl}/assets/images/timothy-macfarlane.jpg`;
+const portraitUrl = `${siteUrl}/assets/images/timothy-macfarlane.png`;
 
 const links = {
   github: "https://github.com/TheCyberLocal",
@@ -69,13 +69,16 @@ function icon(name) {
       '<path d="M12 2.7a9.4 9.4 0 0 0-3 18.3c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.9.1-.7.4-1.1.7-1.4-2.3-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.7c0 .3.2.6.7.5a9.4 9.4 0 0 0-3-18.3Z" fill="currentColor"/>',
     linkedin:
       '<path d="M6.3 8.1H3.2V21h3.1V8.1ZM4.8 3A1.8 1.8 0 1 0 4.8 6.6 1.8 1.8 0 0 0 4.8 3ZM21 13.6c0-3.9-2.1-5.7-4.8-5.7-2.2 0-3.2 1.2-3.8 2.1V8.1H9.3V21h3.1v-7.2c0-1.9.4-3.8 2.8-3.8 2.3 0 2.4 2.2 2.4 3.9V21H21v-7.4Z" fill="currentColor"/>',
-    mail:
-      '<path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>',
+    mail: '<path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>',
   };
   return `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`;
 }
 
-function textLink(label, href, { external = false, className = "text-link" } = {}) {
+function textLink(
+  label,
+  href,
+  { external = false, className = "text-link" } = {},
+) {
   return `<a class="${className}" href="${href}"${external ? ' rel="noopener noreferrer"' : ""}>${label}${icon(external ? "external" : "arrow")}</a>`;
 }
 
@@ -153,9 +156,20 @@ function breadcrumb(items) {
     .join("")}</ol></nav>`;
 }
 
-function layout({ title, description, pagePath, body, schema, pageType = "website", noIndex = false }) {
+function layout({
+  title,
+  description,
+  pagePath,
+  body,
+  schema,
+  pageType = "website",
+  noIndex = false,
+}) {
   const canonical = `${siteUrl}${pagePath}`;
-  const fullTitle = title === "Timothy Macfarlane" ? `${title} | Software Architect & Engineer` : `${title} | Timothy Macfarlane`;
+  const fullTitle =
+    title === "Timothy Macfarlane"
+      ? `${title} | Software Architect & Engineer`
+      : `${title} | Timothy Macfarlane`;
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -219,7 +233,8 @@ function homePage() {
       "@type": "SoftwareSourceCode",
       "@id": `${siteUrl}/work/strling/#project`,
       name: "STRling",
-      description: "A string-pattern DSL and compiler designed to make regular expressions composable, inspectable, and maintainable across language ecosystems.",
+      description:
+        "A string-pattern DSL and compiler designed to make regular expressions composable, inspectable, and maintainable across language ecosystems.",
       url: links.strling,
       codeRepository: links.strlingCode,
       creator: { "@id": personId },
@@ -245,7 +260,7 @@ function homePage() {
         </div>
         <figure class="portrait-block">
           <div class="portrait-frame">
-            <img src="/assets/images/timothy-macfarlane.jpg" width="976" height="976" alt="Timothy Macfarlane wearing a dark jacket" fetchpriority="high">
+            <img src="/assets/images/timothy-macfarlane.png" width="850" height="850" alt="Timothy Macfarlane wearing a dark jacket" fetchpriority="high">
             <div class="portrait-index" aria-hidden="true"><span>01</span><span>Identity</span></div>
           </div>
           <figcaption>Timothy publishes code as TheCyberLocal and develops STRling, an open-source regex DSL and compiler.</figcaption>
@@ -332,7 +347,13 @@ function homePage() {
       </div>
     </section>`;
 
-  return layout({ title: "Timothy Macfarlane", description, pagePath: "/", body, schema });
+  return layout({
+    title: "Timothy Macfarlane",
+    description,
+    pagePath: "/",
+    body,
+    schema,
+  });
 }
 
 function workPage() {
@@ -348,8 +369,18 @@ function workPage() {
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, url: `${siteUrl}/work/agent-portal/`, name: "Agent Portal" },
-        { "@type": "ListItem", position: 2, url: `${siteUrl}/work/strling/`, name: "STRling" },
+        {
+          "@type": "ListItem",
+          position: 1,
+          url: `${siteUrl}/work/agent-portal/`,
+          name: "Agent Portal",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          url: `${siteUrl}/work/strling/`,
+          name: "STRling",
+        },
       ],
     },
   });
@@ -398,7 +429,13 @@ function workPage() {
       </div>
     </section>
     <section class="section selection-note" aria-labelledby="selection-title"><div class="shell note-grid"><p class="eyebrow">Why these projects</p><div><h2 id="selection-title">A small set of projects, chosen for depth.</h2><p>GitHub contains broader implementation history and public code, while LinkedIn contains professional activity and technical posts. This site highlights the projects with enough depth to explain the engineering behind them.</p><div class="inline-links">${textLink("TheCyberLocal on GitHub", links.github, { external: true })}${textLink("Timothy on LinkedIn", links.linkedin, { external: true })}</div></div></div></section>`;
-  return layout({ title: "Selected Work", description, pagePath: "/work/", body, schema });
+  return layout({
+    title: "Selected Work",
+    description,
+    pagePath: "/work/",
+    body,
+    schema,
+  });
 }
 
 function agentPortalPage() {
@@ -408,10 +445,18 @@ function agentPortalPage() {
     "@type": "TechArticle",
     "@id": `${siteUrl}/work/agent-portal/#case-study`,
     url: `${siteUrl}/work/agent-portal/`,
-    headline: "Agent Portal: Building an Evidence System for Release Confidence",
+    headline:
+      "Agent Portal: Building an Evidence System for Release Confidence",
     description,
     author: { "@id": personId },
-    about: ["software assurance", "application architecture", "testing architecture", "release engineering", "operational reliability", "reproducible software engineering"],
+    about: [
+      "software assurance",
+      "application architecture",
+      "testing architecture",
+      "release engineering",
+      "operational reliability",
+      "reproducible software engineering",
+    ],
   });
   const body = `
     <article>
@@ -500,7 +545,14 @@ function agentPortalPage() {
         </div>
       </div>
     </article>`;
-  return layout({ title: "Agent Portal Case Study", description, pagePath: "/work/agent-portal/", body, schema, pageType: "article" });
+  return layout({
+    title: "Agent Portal Case Study",
+    description,
+    pagePath: "/work/agent-portal/",
+    body,
+    schema,
+    pageType: "article",
+  });
 }
 
 function strlingPage() {
@@ -516,7 +568,8 @@ function strlingPage() {
     codeRepository: links.strlingCode,
     creator: { "@id": personId },
     programmingLanguage: ["Rust", "TypeScript", "Python"],
-    keywords: "STRling compiler, DSL, AST, intermediate representation, regex, developer tooling",
+    keywords:
+      "STRling compiler, DSL, AST, intermediate representation, regex, developer tooling",
   });
   const body = `
     <article>
@@ -566,7 +619,14 @@ function strlingPage() {
         </div>
       </div>
     </article>`;
-  return layout({ title: "STRling Compiler Case Study", description, pagePath: "/work/strling/", body, schema, pageType: "article" });
+  return layout({
+    title: "STRling Compiler Case Study",
+    description,
+    pagePath: "/work/strling/",
+    body,
+    schema,
+    pageType: "article",
+  });
 }
 
 function approachPage() {
@@ -579,7 +639,13 @@ function approachPage() {
     headline: "From Outcome to Reproducible Assurance",
     description,
     author: { "@id": personId },
-    about: ["software architecture", "software assurance", "testing architecture", "AI-assisted engineering", "reproducibility"],
+    about: [
+      "software architecture",
+      "software assurance",
+      "testing architecture",
+      "AI-assisted engineering",
+      "reproducibility",
+    ],
   });
   const body = `
     <section class="page-hero approach-hero" aria-labelledby="approach-title"><div class="shell">${breadcrumb([{ label: "Home", href: "/" }, { label: "Approach" }])}<div class="approach-title-grid"><div><p class="eyebrow">Engineering approach</p><h1 id="approach-title">From outcome to reproducible assurance.</h1></div><p class="page-lede">Timothy starts with the conclusion that actually needs to be true, then works backward through its assumptions and forward into mechanisms that can establish it repeatedly.</p></div><div class="reasoning-map" aria-label="Outcome leads to assumptions, governing rules, mechanisms, evidence, evidence adequacy, and reproducible assurance. Verification can reveal assumptions and return the process upstream."><ol><li><span>01</span>Outcome</li><li><span>02</span>Assumptions</li><li><span>03</span>Governing rules</li><li><span>04</span>Mechanism</li><li><span>05</span>Evidence</li><li><span>06</span>Evidence adequacy</li><li><span>07</span>Reproducible assurance</li></ol><div class="return-loop" aria-hidden="true"><span>new assumption discovered</span></div></div></div></section>
@@ -599,7 +665,14 @@ function approachPage() {
     </div></section>
 
     <section class="section ai-section" aria-labelledby="ai-title"><div class="shell ai-grid"><div><p class="eyebrow">AI-assisted engineering</p><h2 id="ai-title">More execution capacity, the same standard of evidence.</h2></div><div><p>Timothy uses AI across research, synthesis, planning, implementation, and analysis. The useful unit is not a single unbounded prompt, but a workflow with supplied context, explicit scope, bounded authority, acceptance criteria, rejection criteria, and independent verification.</p><ul class="ai-controls"><li><span>01</span>Context is supplied, not assumed.</li><li><span>02</span>Authority is limited to the intended decision.</li><li><span>03</span>Outputs face deterministic checks where practical.</li><li><span>04</span>Consequential decisions retain human authority.</li></ul><p class="lead">AI can increase how much work gets done, but the result still has to be checked against evidence.</p></div></div></section>`;
-  return layout({ title: "Engineering Approach", description, pagePath: "/approach/", body, schema, pageType: "article" });
+  return layout({
+    title: "Engineering Approach",
+    description,
+    pagePath: "/approach/",
+    body,
+    schema,
+    pageType: "article",
+  });
 }
 
 function backgroundPage() {
@@ -630,7 +703,13 @@ function backgroundPage() {
     <section class="section trajectory-section" aria-labelledby="trajectory-title"><div class="shell trajectory-grid"><div><p class="eyebrow">Trajectory</p><h2 id="trajectory-title">How the engineering scope has expanded.</h2></div><ol class="trajectory-list"><li><span>01</span><div><h3>Applications and data</h3><p>Build features, model workflows, repair data boundaries, and operate software used by the business.</p></div></li><li><span>02</span><div><h3>Architecture and release</h3><p>Place rules deliberately across code, contracts, data, infrastructure, and recovery paths.</p></div></li><li><span>03</span><div><h3>Assurance and governance</h3><p>Define the evidence needed for consequential technical conclusions and encode recurring decisions.</p></div></li><li><span>04</span><div><h3>Languages and advanced tooling</h3><p>Apply the same approach to compilers, language semantics, developer infrastructure, and deeper systems work.</p></div></li></ol></div></section>
 
     <section class="section public-record"><div class="shell note-grid"><p class="eyebrow">Elsewhere</p><div><h2>More of the work is public elsewhere.</h2><p>GitHub contains Timothy's public code and project history. LinkedIn contains his professional history and technical posts. STRling has its own product and documentation site.</p><div class="inline-links">${textLink("GitHub", links.github, { external: true })}${textLink("LinkedIn", links.linkedin, { external: true })}${textLink("STRling", links.strling, { external: true })}</div></div></div></section>`;
-  return layout({ title: "Professional Background", description, pagePath: "/background/", body, schema });
+  return layout({
+    title: "Professional Background",
+    description,
+    pagePath: "/background/",
+    body,
+    schema,
+  });
 }
 
 function aboutPage() {
@@ -645,25 +724,36 @@ function aboutPage() {
     mainEntity: { "@id": personId },
   });
   const body = `
-    <section class="page-hero about-hero" aria-labelledby="about-title"><div class="shell about-hero-grid"><div>${breadcrumb([{ label: "Home", href: "/" }, { label: "About" }])}<p class="eyebrow">About Timothy</p><h1 id="about-title">Work, interests, and the person behind them.</h1><p class="page-lede">Timothy Macfarlane is a software architect and engineer based in northern Alabama. His work spans production applications, release and verification systems, modernization, and developer tooling.</p></div><figure class="about-portrait"><img src="/assets/images/timothy-macfarlane.jpg" width="976" height="976" loading="eager" alt="Timothy Macfarlane wearing a dark jacket"><figcaption>Timothy Macfarlane</figcaption></figure></div></section>
+    <section class="page-hero about-hero" aria-labelledby="about-title"><div class="shell about-hero-grid"><div>${breadcrumb([{ label: "Home", href: "/" }, { label: "About" }])}<p class="eyebrow">About Timothy</p><h1 id="about-title">Work, interests, and the person behind them.</h1><p class="page-lede">Timothy Macfarlane is a software architect and engineer based in northern Alabama. His work spans production applications, release and verification systems, modernization, and developer tooling.</p></div><figure class="about-portrait"><img src="/assets/images/timothy-macfarlane.png" width="850" height="850" loading="eager" alt="Timothy Macfarlane wearing a dark jacket"><figcaption>Timothy Macfarlane</figcaption></figure></div></section>
 
     <section class="section about-intro"><div class="shell about-copy-grid"><p class="eyebrow">The person behind the work</p><div><h2>Music, ideas, stories, and interests beyond software.</h2><p>Software takes up a lot of Timothy's attention, especially language design, developer tooling, architecture, and the challenge of making complex systems easier to reason about.</p><p>Outside engineering, he plays piano, listens heavily to electronic music, plays pickleball, and spends time with philosophy, science, rationality, audiobooks, speculative fiction, and anime.</p></div></div></section>
 
     <section class="section interest-section" aria-labelledby="interests-title"><div class="shell"><div class="section-heading"><p class="eyebrow">Interests</p><h2 id="interests-title">Some recurring interests.</h2></div><ul class="interest-grid"><li><span>01</span><strong>Piano</strong></li><li><span>02</span><strong>Electronic music</strong></li><li><span>03</span><strong>Philosophy</strong></li><li><span>04</span><strong>Science</strong></li><li><span>05</span><strong>Rationality</strong></li><li><span>06</span><strong>Audiobooks</strong></li><li><span>07</span><strong>Speculative fiction</strong></li><li><span>08</span><strong>Anime</strong></li><li><span>09</span><strong>Pickleball</strong></li><li><span>10</span><strong>Programming</strong></li></ul></div></section>
 
     <section class="section identity-section" aria-labelledby="identity-title"><div class="shell identity-grid"><div><p class="eyebrow">Public identity</p><h2 id="identity-title">Timothy Macfarlane is the name. TheCyberLocal is the handle.</h2></div><div><p>TheCyberLocal is Timothy's long-running GitHub handle and historical web identity. It is where public code and implementation history live. STRling is an independent technical project created by Timothy. This site connects those public projects and profiles back to the person and engineering work behind them.</p></div></div><div class="shell surface-grid"><a href="${links.github}" rel="me noopener noreferrer"><span>Public code and projects</span><strong>GitHub / TheCyberLocal</strong>${icon("external")}</a><a href="${links.linkedin}" rel="me noopener noreferrer"><span>Professional history and posts</span><strong>LinkedIn / Timothy Macfarlane</strong>${icon("external")}</a><a href="${links.strling}" rel="noopener noreferrer"><span>Product and documentation</span><strong>STRling</strong>${icon("external")}</a><a href="${links.email}"><span>Direct contact</span><strong>timdiscovers@gmail.com</strong>${icon("mail")}</a></div></section>`;
-  return layout({ title: "About", description, pagePath: "/about/", body, schema });
+  return layout({
+    title: "About",
+    description,
+    pagePath: "/about/",
+    body,
+    schema,
+  });
 }
 
 function notFoundPage() {
-  const description = "The requested page was not found on Timothy Macfarlane's professional site.";
+  const description =
+    "The requested page was not found on Timothy Macfarlane's professional site.";
   const body = `<section class="page-hero not-found" aria-labelledby="not-found-title"><div class="shell"><p class="eyebrow">404 / Page not found</p><h1 id="not-found-title">This page could not be found.</h1><p class="page-lede">The page may have moved, or the address may be incomplete.</p><div class="hero-actions">${textLink("Return home", "/", { className: "button button-primary" })}${textLink("Browse selected work", "/work/", { className: "button button-secondary" })}</div></div></section>`;
   return layout({
     title: "Page Not Found",
     description,
     pagePath: "/404.html",
     body,
-    schema: graph({ "@type": "WebPage", name: "Page Not Found", url: `${siteUrl}/404.html` }),
+    schema: graph({
+      "@type": "WebPage",
+      name: "Page Not Found",
+      url: `${siteUrl}/404.html`,
+    }),
     noIndex: true,
   });
 }
@@ -671,17 +761,34 @@ function notFoundPage() {
 const pages = [
   { file: "index.html", url: "/", render: homePage },
   { file: "work/index.html", url: "/work/", render: workPage },
-  { file: "work/agent-portal/index.html", url: "/work/agent-portal/", render: agentPortalPage },
-  { file: "work/strling/index.html", url: "/work/strling/", render: strlingPage },
+  {
+    file: "work/agent-portal/index.html",
+    url: "/work/agent-portal/",
+    render: agentPortalPage,
+  },
+  {
+    file: "work/strling/index.html",
+    url: "/work/strling/",
+    render: strlingPage,
+  },
   { file: "approach/index.html", url: "/approach/", render: approachPage },
-  { file: "background/index.html", url: "/background/", render: backgroundPage },
+  {
+    file: "background/index.html",
+    url: "/background/",
+    render: backgroundPage,
+  },
   { file: "about/index.html", url: "/about/", render: aboutPage },
   { file: "404.html", url: "/404.html", render: notFoundPage },
 ];
 
 for (const page of pages) {
-  const output = page.render().split(String.fromCharCode(10)).map((line) => line.trimEnd()).join(String.fromCharCode(10));
-  if (output.includes("\u2014")) throw new Error(`Em dash found in ${page.file}`);
+  const output = page
+    .render()
+    .split(String.fromCharCode(10))
+    .map((line) => line.trimEnd())
+    .join(String.fromCharCode(10));
+  if (output.includes("\u2014"))
+    throw new Error(`Em dash found in ${page.file}`);
   const outputPath = path.join(root, page.file);
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, output, "utf8");
